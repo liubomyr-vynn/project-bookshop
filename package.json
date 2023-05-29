@@ -2,7 +2,7 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://PavTrap.github.io/team-project-10",
+  "homepage": "https://liubomyr-vynn.github.io/project-bookshop",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /team-project-10/"
