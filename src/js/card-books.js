@@ -1,7 +1,6 @@
 import { openModal } from './modal-window';
 export { cardRenderByTop, cardRenderByCat, renderButton, imageButtonsHandler };
 
-//------------------Шаблон рендера карток
 function cardRenderByTop(obj) {
   const cardMarkup = `
   <ul class='bestseller-card'>
