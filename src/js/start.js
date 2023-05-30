@@ -13,15 +13,15 @@ const emailInputEl = document.querySelector('#user_email');
 const passwordLabelEl = document.querySelector('label[for="user_password"]');
 const passwordInputEl = document.querySelector('#user_password');
 
-// nameInputEl.addEventListener('focus', e =>
-//   console.log((nameLabelEl.style.top = '5%'))
-// );
-// emailInputEl.addEventListener('focus', e =>
-//   console.log((emailLabelEl.style.top = '5%'))
-// );
-// passwordInputEl.addEventListener('focus', e =>
-//   console.log((passwordLabelEl.style.top = '5%'))
-// );
+nameInputEl.addEventListener('focus', e =>
+  console.log((nameLabelEl.style.top = '5%'))
+);
+emailInputEl.addEventListener('focus', e =>
+  console.log((emailLabelEl.style.top = '5%'))
+);
+passwordInputEl.addEventListener('focus', e =>
+  console.log((passwordLabelEl.style.top = '5%'))
+);
 
 function validateForm() {
   let isValid = true;
@@ -60,7 +60,7 @@ function handleOnSendForm(e) {
   e.preventDefault();
 
   if (validateForm()) {
-    // console.log('Form send!');
+    console.log('Form send!');
 
     backdropEl.classList.add('is-hidden-start');
     backdropEl.style.display = 'none';
