@@ -18,6 +18,6 @@ const fetchArray = fetch(
         return `<li class = "categories__item"><a href = "#" data-category = "${list_name}" class = "categories__link">${list_name}</a></li>`;
       });
     categoriesList.insertAdjacentHTML('beforeend', array.join(''));
-    console.log(array);
+
     return array;
   });
