@@ -7,7 +7,7 @@ const fetchUsers = async id => {
     `https://books-backend.p.goit.global/books/${id}`
   );
   const users = await response.json();
-  console.log(users);
+
   return users;
 };
 
@@ -22,13 +22,12 @@ const bookstore_shopPic = new URL(
 );
 
 const modalBtnAddRemove = document.querySelector('.pop__btn');
-// const modalData = document.getElementById('modal')
+
 const bookInfoURL = document.getElementById('bookInfoUrl');
 const bookInfo = document.getElementById('bookInfo');
 const bookInform = document.getElementById('bookInform');
 const popTextEl = document.querySelector('.pop-text');
 
-// Функція для відкриття модального вікна та заповнення його даними з API
 export function openModal(id) {
   const bookId = fetchUsers(id);
   bookId.then(id => {
@@ -49,11 +48,12 @@ export function openModal(id) {
       `<div>
           <h2 class="modal-card__title">${id.title}</h2>
           <p class="modal-card__author">${id.author}</p>
-          <p class="modal-card__description">${id.description || 'There is no description'}</p>
+          <p class="modal-card__description">${
+            id.description || 'There is no description'
+          }</p>
         </div>`
     );
 
-    // Відобразити модальне вікно
     id.buy_links.map(el => {
       if (el.name === 'Amazon') {
         bookInfoURL.insertAdjacentHTML(
@@ -112,10 +112,8 @@ export function openModal(id) {
     });
   });
 
-  // Відобразити модальне вікно
   modal.style.display = 'block';
 
-  // Додати обробник події на кнопку закриття модального вікна
   const closeButton = document.getElementsByClassName('modal-btn')[0];
   closeButton.onclick = function () {
     modalBtnAddRemove.removeEventListener('click', buttonHandler, false);
@@ -123,18 +121,16 @@ export function openModal(id) {
     bookInfoURL.innerHTML = '';
     bookInfo.innerHTML = '';
     bookInform.innerHTML = '';
-    // popTextEl.innerHTML = '';
   };
 
   window.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       modalBtnAddRemove.removeEventListener('click', buttonHandler, false);
       modal.style.display = 'none';
-      // modalData.innerHTML = '';
+
       bookInfoURL.innerHTML = '';
       bookInfo.innerHTML = '';
       bookInform.innerHTML = '';
-      // popTextEl.innerHTML = '';
     }
   });
 
@@ -145,11 +141,10 @@ window.onclick = function (event) {
   if (event.target == modal) {
     modalBtnAddRemove.removeEventListener('click', buttonHandler, false);
     modal.style.display = 'none';
-    // modalData.innerHTML = '';
+
     bookInfoURL.innerHTML = '';
     bookInfo.innerHTML = '';
     bookInform.innerHTML = '';
-    // popTextEl.innerHTML = '';
   }
 };
 
@@ -159,8 +154,7 @@ const buttonHandler = function (event) {
   let parsedDataFromLocalStorage = JSON.parse(dataFromLocalStorage);
   let name = parsedDataFromLocalStorage.name;
   let email = parsedDataFromLocalStorage.email;
-  console.log('ListId from LocalStorage:', parsedDataFromLocalStorage.listId);
-  console.log('CurrentId from Button', currentCardId);
+
   if (parsedDataFromLocalStorage.listId.indexOf(currentCardId) == -1) {
     parsedDataFromLocalStorage.listId.push(currentCardId);
     localStorage.setItem(
@@ -171,7 +165,7 @@ const buttonHandler = function (event) {
         listId: parsedDataFromLocalStorage.listId,
       })
     );
-    console.log('Item was added');
+
     event.target.innerHTML = 'remove from the shopping list';
     popTextEl.innerHTML =
       'Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.';
@@ -189,7 +183,7 @@ const buttonHandler = function (event) {
         listId: filteredArray,
       })
     );
-    console.log('Item was deleted');
+
     event.target.innerHTML = 'Add to shopping list';
     popTextEl.innerHTML = '';
     modalBtnAddRemove.removeEventListener('click', buttonHandler, false);
@@ -214,11 +208,9 @@ function setHandler() {
   const parsedDataFromLocalStorage = JSON.parse(dataFromLocalStorage);
 
   if (parsedDataFromLocalStorage.listId.indexOf(idFromBook) == -1) {
-    console.log('ID:', idFromBook, 'not found');
     modalBtnAddRemove.innerHTML = 'Add to shopping list';
     popTextEl.innerHTML = ' ';
   } else {
-    console.log('ID:', idFromBook, 'found');
     modalBtnAddRemove.innerHTML = 'remove from the shopping lis';
     popTextEl.innerHTML =
       'Сongratulations! You have added the book to the shopping list. To delete, press the button “Remove from the shopping list”.';
