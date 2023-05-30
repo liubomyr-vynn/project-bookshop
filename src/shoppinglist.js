@@ -1,13 +1,9 @@
 import './js/theme-switch';
-// import './js/start';
-// import './js/start-open-close';
-// import './js/firebase';
 
 // імпортуємо Pagination та стилі з бібліотеки 'tui-pagination'
 import Pagination from 'tui-pagination';
 
 import { bookShops } from './js/array_book_shops';
-console.log(bookShops);
 
 var shoppingCartBlock = document.querySelector(
   '.shopping-carg-book-description-block'
@@ -31,7 +27,6 @@ if (userName === null) {
 
 // Отрумуємо масив з списком id книг
 let listID = userName.listId;
-console.log(listID);
 
 // Налаштування параметрів для бібліотеки Pagination
 let options = {
