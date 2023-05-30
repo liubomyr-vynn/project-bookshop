@@ -5,7 +5,7 @@
   "homepage": "https://liubomyr-vynn.github.io/project-bookshop",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /team-project-10/"
+    "build": "parcel build src/*.html --public-url /project-bookshop/"
   },
   "repository": {
     "type": "git",
