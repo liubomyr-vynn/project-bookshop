@@ -1,4 +1,4 @@
-//------------------Імпорт пакетів/стилі/шаблонів
+
 import {
   cardRenderByTop,
   cardRenderByCat,
@@ -6,9 +6,9 @@ import {
   imageButtonsHandler,
 } from './card-books.js';
 import { categoriesList } from './categories.js';
-//------------------Імпорт пакетів/стилі/шаблонів
 
-//------------------Змінні
+
+
 const refs = {
   allCategoryContainer: document.querySelector('.bestSellers__container'),
   bestsellerContainer: document.querySelector('.bestSellers'),
@@ -18,9 +18,9 @@ const refs = {
   pcWidth: 1440,
 };
 
-//------------------Змінні
 
-//------------------Додаткові функції
+
+
 function changeTitleColors(string) {
   let arrayFromString = string.split(' ');
   let tempString = string.substr(arrayFromString[0].length);
@@ -34,28 +34,14 @@ function isCategorySelected() {
     localStorage.getItem('selected-category') != null &&
     localStorage.getItem('selected-category') !== 'undefined'
   ) {
-    //localStorage.setItem('selected-category', undefined);
+
     return true;
   } else if (localStorage.getItem('selected-category') == 'undefined') {
     return false;
   }
   return false;
 }
-// function isCategorySelected() {
-//   if (
-//     localStorage.getItem('selected-category') &&
-//     localStorage.getItem('selected-category') != 'undefined'
-//   ) {
-//     return true;
-//   }
-//   return false;
-// }
-// function isCategorySelected() {
-//   if (localStorage.getItem('selected-category') == 'null') {
-//     return true;
-//   }
-//   return false;
-// }
+
 function checkWindowWidth() {
   return document.documentElement.clientWidth;
 }
@@ -109,9 +95,7 @@ function categoriesLinksHandler() {
     });
   }
 }
-//------------------Додаткові функції
 
-//------------------Запрос на API
 const fetchBook = async () => {
   if (isCategorySelected()) {
     const response = await fetch(
@@ -129,9 +113,7 @@ const fetchBook = async () => {
     return book;
   }
 };
-//------------------Запрос на API
 
-//------------------Функція запроса даних по ТОП книгам в категорії
 const fetchedArrayByTop = async () => {
   refs.cardsQuantityByCategory = 1;
   if (checkWindowWidth() >= refs.tabletWidth) {
@@ -161,9 +143,7 @@ const fetchedArrayByTop = async () => {
     return data;
   }
 };
-//------------------Функція запроса даних по ТОП книгам в категорії
 
-//------------------Фукнція рендера карток
 async function renderFetchByTop() {
   const promise = await fetchedArrayByTop();
 
@@ -179,7 +159,7 @@ async function renderFetchByTop() {
 
     promise[i].map(obj => {
       currentCategory = obj.list_name;
-      // cardRenderByTop(obj);
+
       categoryContainer.insertAdjacentHTML('beforeend', cardRenderByTop(obj));
     });
     categoryContainer.insertAdjacentHTML(
@@ -205,7 +185,7 @@ async function renderFetchByCat() {
   const categoryContainer = document.createElement('div');
   categoryContainer.classList.add('category-container');
   for (let i = 0; i < promise.length; i++) {
-    // cardRenderByCat(promise[i]);
+
     categoryContainer.insertAdjacentHTML(
       'beforeend',
       cardRenderByCat(promise[i])
@@ -232,7 +212,7 @@ async function renderDOM() {
     renderFetchByTop();
   }
 }
-//------------------Фукнція рендера карток
+
 
 renderDOM();
 reloadPage();
